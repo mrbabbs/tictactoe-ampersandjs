@@ -9,7 +9,7 @@ var compress = require('compression');
 var config = require('getconfig');
 var semiStatic = require('semi-static');
 var serveStatic = require('serve-static');
-var stylizer = require('stylizer');
+//var stylizer = require('stylizer');
 var templatizer = require('templatizer');
 var app = express();
 
@@ -43,17 +43,6 @@ app.use(helmet.xssFilter());
 app.use(helmet.nosniff());
 
 app.set('view engine', 'jade');
-
-
-// -----------------
-// Set up our little demo API
-// -----------------
-var api = require('./fakeApi');
-app.get('/api/people', api.list);
-app.get('/api/people/:id', api.get);
-app.delete('/api/people/:id', api.delete);
-app.put('/api/people/:id', api.update);
-app.post('/api/people', api.add);
 
 
 // -----------------
@@ -106,7 +95,7 @@ new Moonboots({
             // This re-builds css from stylus each time the app's main
             // css file is requested. Which means you can seamlessly change stylus files
             // and see new styles on refresh.
-            if (config.isDev) {
+            /*if (config.isDev) {
                 stylizer({
                     infile: fixPath('stylesheets/app.styl'),
                     outfile: fixPath('stylesheets/app.css'),
@@ -114,7 +103,8 @@ new Moonboots({
                 }, done);
             } else {
                 done();
-            }
+            }*/
+            done();
         }
     },
     server: app
