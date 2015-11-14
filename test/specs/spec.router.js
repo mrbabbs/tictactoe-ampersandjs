@@ -12,6 +12,10 @@ describe('Router', function () {
     describe('when is initialized', function () {
         it('should have a function to go home page', function () {
             expect(this.router.home).toBeDefined();
-        });    
+        });
+        
+        it('should have a function to go to game page', function () {
+            expect(this.router.game).toBeDefined();
+        });
     });
 });
