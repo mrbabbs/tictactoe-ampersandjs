@@ -1,18 +1,14 @@
 section.page#newGame
-  .row
-    .col-xs-12
-      h3 New Game
-
   form(data-hook="players-form")
     .row
       .col-xs-12
         fieldset(data-hook="field-container")
     .row
       .col-xs-12
-        .alert.alert-danger(role="alert").
+        .alert.text-center.alert-danger(role="alert").
           The usernames cannot be the same
-    .row
-      .col-xs-12
-        .buttons-group
-          button.btn.btn-primary(type="submit") Start
-          button.btn.btn-primary(type="reset") Cancel
+    .row.text-center
+      .col-xs-2.col-xs-offset-4.col-md-1.col-md-offset-5
+          button.btn.blue-background.font-weight(type="submit") Start
+      .col-xs-2.col-md-1
+          button.btn.pink-background.font-weight(type="reset") Cancel

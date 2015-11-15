@@ -1,29 +1,28 @@
 section.page#gamePage
-  section#game
-    .row
-      .col-xs-12
-        h3 Game
-
+  section#game.text-center
     .row.players
-      .col-xs-5.username
-        h4(data-hook="player0") Player 1
-      .col-xs-2
-        h4 vs
-      .col-xs-5.username
-        h4(data-hook="player1") Player 2
+      .col-xs-5.col-md-4.username.blue.text-right
+        span(data-hook="player0") Player 1
+      .col-xs-2.col-md-3
+        span vs
+      .col-xs-5.col-md-4.username.pink.text-left
+        span(data-hook="player1") Player 2
 
     .board
       each row in [0, 1, 2]
         .row
           each col in [0, 1, 2]
-            - var classes = "col-xs-4 tile-" + row + "-" + col + " tile"
+            - var classes = "col-xs-4 col-md-3 tile-" + row + "-" + col + " tile"
+            if(col === 0) 
+              - classes = classes + " col-md-offset-1"
+              
             div(class=classes data-row-index=row data-col-index=col data-marked-by="") &nbsp;
         
-  section#leaderboard
-    .row
+  section#leaderboard.text-center
+    .row.result
       .col-xs-12
-        h3#draw Draw
-        h3#winner Winner:
+        p#draw Draw
+        p#winner Winner: 
             span
         
     .row#header
@@ -38,14 +37,14 @@ section.page#gamePage
       .col-xs-3.draws
       .col-xs-3.losses
       
-    .row#player1
+    .row#player1.margin-bottom
       .col-xs-3.username
       .col-xs-3.wins
       .col-xs-3.draws
       .col-xs-3.losses
       
-    .row
+    .row.text-center
         .col-xs-12
-            button.btn.btn-primary#newGame New Game
+            button.btn.blue-background.font-weight#newGame New Game
         
       
