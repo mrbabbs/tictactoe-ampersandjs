@@ -75,6 +75,7 @@ new Moonboots({
         main: fixPath('client/app.js'),
         developmentMode: config.isDev,
         libraries: [
+          fixPath('fonts/Purisa.ttf')
         ],
         stylesheets: [
             fixPath('stylesheets/bootstrap.css'),

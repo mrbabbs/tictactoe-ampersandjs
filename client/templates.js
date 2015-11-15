@@ -18,7 +18,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body class="text-center"><div class="container"><div class="row"><div class="col-xs-12"><h1 class="text-center logo"> <a href="/">TicTacToe</a></h1></div></div><div class="row"><div class="col-xs-12 container"><main data-hook="page-container"></main></div></div></div><!--  .container\n  main(data-hook="page-container")\n  footer.footer-main\n    nav.nav-footer.cf\n      //- Three columns of links\n      div\n        a.nav-item.external(href="http://ampersandjs.com/learn") Learn\n        a.nav-item.external(href="http://ampersandjs.com/docs") Docs\n        a.nav-item.external(href="http://tools.ampersandjs.com") Modules\n      div\n        a.nav-item.external(href="https://gitter.im/AmpersandJS/AmpersandJS") Chatroom\n        a.nav-item.external(href="https://trello.com/b/UxylNzHr/ampersand-js-roadmap") Roadmap\n        a.nav-item.external(href="http://ampersandjs.com/contribute") Contribute\n      div\n        a.nav-item.external(href="http://ampersandjs.com/security") Security\n        a.nav-item.external(href="https://github.com/ampersandjs") Github\n        a.nav-item.external(href="https://twitter.com/ampersandjs") Twitter\n    p Sponsored by \n      a(href="https://andyet.com") &amp;yet \n      br\n      | with the help of our \n      a(href="http://ampersandjs.com/contribute") contributors\n    a.logo.logo-ampersand-pink(href="http://ampersandjs.com") &amp;--></body>';
+        return '<body><div class="container"><div class="row"><div class="col-xs-12"><h1 class="text-center logo margin-bottom"><a href="/"> <span class="blue">Tic</span><span>Tac</span><span class="pink">Toe</span></a></h1></div></div><div class="row"><div class="col-xs-12 container"><main data-hook="page-container"></main></div></div></div></body>';
     };
 
     // forms/input-view.jade compiled template
@@ -38,7 +38,7 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(undefined) {
-            buf.push('<section id="gamePage" class="page"><section id="game"><div class="row"><div class="col-xs-12"><h3>Game</h3></div></div><div class="row players"><div class="col-xs-5 username"><h4 data-hook="player0">Player 1</h4></div><div class="col-xs-2"><h4>vs</h4></div><div class="col-xs-5 username"><h4 data-hook="player1">Player 2</h4></div></div><div class="board">');
+            buf.push('<section id="gamePage" class="page"><section id="game" class="text-center"><div class="row players"><div class="col-xs-5 col-md-4 username blue text-right"><span data-hook="player0">Player 1</span></div><div class="col-xs-2 col-md-3"><span>vs</span></div><div class="col-xs-5 col-md-4 username pink text-left"><span data-hook="player1">Player 2</span></div></div><div class="board">');
             (function() {
                 var $obj = [ 0, 1, 2 ];
                 if ("number" == typeof $obj.length) {
@@ -50,7 +50,10 @@
                             if ("number" == typeof $obj.length) {
                                 for (var $index = 0, $l = $obj.length; $index < $l; $index++) {
                                     var col = $obj[$index];
-                                    var classes = "col-xs-4 tile-" + row + "-" + col + " tile";
+                                    var classes = "col-xs-4 col-md-3 tile-" + row + "-" + col + " tile";
+                                    if (col === 0) {
+                                        classes = classes + " col-md-offset-1";
+                                    }
                                     buf.push("<div" + jade.attr("data-row-index", row, true, false) + jade.attr("data-col-index", col, true, false) + ' data-marked-by=""' + jade.cls([ classes ], [ true ]) + ">&nbsp;</div>");
                                 }
                             } else {
@@ -58,7 +61,10 @@
                                 for (var $index in $obj) {
                                     $l++;
                                     var col = $obj[$index];
-                                    var classes = "col-xs-4 tile-" + row + "-" + col + " tile";
+                                    var classes = "col-xs-4 col-md-3 tile-" + row + "-" + col + " tile";
+                                    if (col === 0) {
+                                        classes = classes + " col-md-offset-1";
+                                    }
                                     buf.push("<div" + jade.attr("data-row-index", row, true, false) + jade.attr("data-col-index", col, true, false) + ' data-marked-by=""' + jade.cls([ classes ], [ true ]) + ">&nbsp;</div>");
                                 }
                             }
@@ -76,7 +82,10 @@
                             if ("number" == typeof $obj.length) {
                                 for (var $index = 0, $l = $obj.length; $index < $l; $index++) {
                                     var col = $obj[$index];
-                                    var classes = "col-xs-4 tile-" + row + "-" + col + " tile";
+                                    var classes = "col-xs-4 col-md-3 tile-" + row + "-" + col + " tile";
+                                    if (col === 0) {
+                                        classes = classes + " col-md-offset-1";
+                                    }
                                     buf.push("<div" + jade.attr("data-row-index", row, true, false) + jade.attr("data-col-index", col, true, false) + ' data-marked-by=""' + jade.cls([ classes ], [ true ]) + ">&nbsp;</div>");
                                 }
                             } else {
@@ -84,7 +93,10 @@
                                 for (var $index in $obj) {
                                     $l++;
                                     var col = $obj[$index];
-                                    var classes = "col-xs-4 tile-" + row + "-" + col + " tile";
+                                    var classes = "col-xs-4 col-md-3 tile-" + row + "-" + col + " tile";
+                                    if (col === 0) {
+                                        classes = classes + " col-md-offset-1";
+                                    }
                                     buf.push("<div" + jade.attr("data-row-index", row, true, false) + jade.attr("data-col-index", col, true, false) + ' data-marked-by=""' + jade.cls([ classes ], [ true ]) + ">&nbsp;</div>");
                                 }
                             }
@@ -93,14 +105,14 @@
                     }
                 }
             }).call(this);
-            buf.push('</div></section><section id="leaderboard"><div class="row"><div class="col-xs-12"><h3 id="draw">Draw</h3><h3 id="winner">Winner:<span></span></h3></div></div><div id="header" class="row"><div class="col-xs-3">Player</div><div class="col-xs-3">Wins</div><div class="col-xs-3">Draws</div><div class="col-xs-3">Losses</div></div><div id="player0" class="row"><div class="col-xs-3 username"></div><div class="col-xs-3 wins"></div><div class="col-xs-3 draws"></div><div class="col-xs-3 losses"></div></div><div id="player1" class="row"><div class="col-xs-3 username"></div><div class="col-xs-3 wins"></div><div class="col-xs-3 draws"></div><div class="col-xs-3 losses"></div></div><div class="row"><div class="col-xs-12"><button id="newGame" class="btn btn-primary">New Game</button></div></div></section></section>');
+            buf.push('</div></section><section id="leaderboard" class="text-center"><div class="row result"><div class="col-xs-12"><p id="draw">Draw</p><p id="winner">Winner: <span></span></p></div></div><div id="header" class="row"><div class="col-xs-3">Player</div><div class="col-xs-3">Wins</div><div class="col-xs-3">Draws</div><div class="col-xs-3">Losses</div></div><div id="player0" class="row"><div class="col-xs-3 username"></div><div class="col-xs-3 wins"></div><div class="col-xs-3 draws"></div><div class="col-xs-3 losses"></div></div><div id="player1" class="row margin-bottom"><div class="col-xs-3 username"></div><div class="col-xs-3 wins"></div><div class="col-xs-3 draws"></div><div class="col-xs-3 losses"></div></div><div class="row text-center"><div class="col-xs-12"><button id="newGame" class="btn blue-background font-weight">New Game</button></div></div></section></section>');
         }).call(this, "undefined" in locals_for_with ? locals_for_with.undefined : typeof undefined !== "undefined" ? undefined : undefined);
         return buf.join("");
     };
 
     // pages/new-game.jade compiled template
     templatizer["pages"]["new-game"] = function tmpl_pages_new_game() {
-        return '<section id="newGame" class="page"><div class="row"><div class="col-xs-12"><h3>New Game</h3></div></div><form data-hook="players-form"><div class="row"><div class="col-xs-12"><fieldset data-hook="field-container"></fieldset></div></div><div class="row"><div class="col-xs-12"><div role="alert" class="alert alert-danger">The usernames cannot be the same</div></div></div><div class="row"><div class="col-xs-12"><div class="buttons-group"><button type="submit" class="btn btn-primary">Start</button><button type="reset" class="btn btn-primary">Cancel</button></div></div></div></form></section>';
+        return '<section id="newGame" class="page"><form data-hook="players-form"><div class="row"><div class="col-xs-12"><fieldset data-hook="field-container"></fieldset></div></div><div class="row"><div class="col-xs-12"><div role="alert" class="alert text-center alert-danger">The usernames cannot be the same</div></div></div><div class="row text-center"><div class="col-xs-2 col-xs-offset-4 col-md-1 col-md-offset-5"><button type="submit" class="btn blue-background font-weight">Start</button></div><div class="col-xs-2 col-md-1"><button type="reset" class="btn pink-background font-weight">Cancel</button></div></div></form></section>';
     };
 
     return templatizer;
