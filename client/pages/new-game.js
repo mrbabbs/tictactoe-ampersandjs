@@ -9,7 +9,7 @@ module.exports = PageView.extend({
     render: function () {
         this.renderWithTemplate();
         this.form = new NewGameForm({
-            el: this.queryByHook('field-container'),
+            el: this.query('form'),
             data: {
                 player0: '',
                 player1: ''
