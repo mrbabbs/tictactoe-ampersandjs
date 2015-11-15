@@ -100,7 +100,7 @@
 
     // pages/new-game.jade compiled template
     templatizer["pages"]["new-game"] = function tmpl_pages_new_game() {
-        return '<section id="newGame" class="page"><div class="row"><div class="col-xs-12"><h3>New Game</h3></div></div><form data-hook="players-form"><div class="row"><div class="col-xs-12"><fieldset data-hook="field-container"></fieldset></div></div><div class="row"><div class="col-xs-12"><div class="buttons-group"><button type="submit" class="btn btn-primary">Start</button><button type="reset" class="btn btn-primary">Cancel</button></div></div></div></form></section>';
+        return '<section id="newGame" class="page"><div class="row"><div class="col-xs-12"><h3>New Game</h3></div></div><form data-hook="players-form"><div class="row"><div class="col-xs-12"><fieldset data-hook="field-container"></fieldset></div></div><div class="row"><div class="col-xs-12"><div role="alert" class="alert alert-danger">The usernames cannot be the same</div></div></div><div class="row"><div class="col-xs-12"><div class="buttons-group"><button type="submit" class="btn btn-primary">Start</button><button type="reset" class="btn btn-primary">Cancel</button></div></div></div></form></section>';
     };
 
     return templatizer;
