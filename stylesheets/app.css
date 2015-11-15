@@ -1,3 +1,68 @@
 body {
   background: #fff;
 }
+
+/*Board*/
+.board {
+  font-size: 7em;
+}
+
+.turn {
+  background: lightgreen;
+}
+
+.tile-player0 {
+  color: lightblue
+}
+
+.tile-player1 {
+  color: lightgreen
+}
+
+.tile-0-0 {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.tile-0-1 {
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.tile-0-2 {
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.tile-1-0 {
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.tile-1-1 {
+  border: 2px solid black;
+}
+
+.tile-1-2 {
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.tile-2-0 {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.tile-2-1 {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.tile-2-2 {
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+}

@@ -14,6 +14,8 @@ describe('Game View', function () {
         this.gameView.render();
         this.el = this.gameView.el;
         document.body.appendChild(this.gameView.el);
+        window.app = jasmine.createSpyObj('app', ['router']);
+        window.app.router = jasmine.createSpyObj('router', ['navigate']);
     });
 
     afterEach(function () {
@@ -31,6 +33,17 @@ describe('Game View', function () {
         expect(function () {
             var gViewWithoutModel = new GameView();
         }).toThrowError('Model is required');
+    });
+
+    it('should navigate to the if model is not defined ',function (){
+        var gViewWithoutModel;
+        try {
+            gViewWithoutModel = new GameView();
+        } catch (e) {
+            ;
+        }
+        
+        expect(window.app.router.navigate).toHaveBeenCalled();
     });
 
     describe('when view is initialized', function () {
@@ -193,20 +206,12 @@ describe('Game View', function () {
                 it('should show the scores of the player0', 
                    function () {
                     var wins = this.el.querySelector('#player0 .wins');
-                    var draws = this.el.querySelector('#player0 .draws');
-                    var losses = this.el.querySelector('#player0 .losses');
+                    var draws =  this.el.querySelector('#player0 .draws');
+                    var losses =  this.el.querySelector('#player0 .losses');
 
-                    expect(wins.innerHTML).toEqual(this.game.player0.wins);
-                    expect(draws.innerHTML).toEqual(this.game.player0.draws);
-                    expect(losses.innerHTML).toEqual(this.game.player0.losses);
-
-                    this.game.player0.wins += 1;
-                    this.game.player0.draws += 1;
-                    this.game.player0.losses += 1;
-
-                    expect(wins.innerHTML).toEqual(this.game.player0.wins);
-                    expect(draws.innerHTML).toEqual(this.game.player0.draws);
-                    expect(losses.innerHTML).toEqual(this.game.player0.losses);
+                    expect(wins.innerHTML).toEqual('' + this.game.player0.wins);
+                    expect(draws.innerHTML).toEqual('' + this.game.player0.draws);
+                    expect(losses.innerHTML).toEqual('' + this.game.player0.losses);
                 });
 
                 it('should show the scores of the player1', 
@@ -215,17 +220,9 @@ describe('Game View', function () {
                     var draws = this.el.querySelector('#player1 .draws');
                     var losses = this.el.querySelector('#player1 .losses');
 
-                    expect(wins.innerHTML).toEqual(this.game.player1.wins);
-                    expect(draws.innerHTML).toEqual(this.game.player1.draws);
-                    expect(losses.innerHTML).toEqual(this.game.player1.losses);
-
-                    this.game.player1.wins += 1;
-                    this.game.player1.draws += 1;
-                    this.game.player1.losses += 1;
-
-                    expect(wins.innerHTML).toEqual(this.game.player1.wins);
-                    expect(draws.innerHTML).toEqual(this.game.player1.draws);
-                    expect(losses.innerHTML).toEqual(this.game.player1.losses);
+                    expect(wins.innerHTML).toEqual('' + this.game.player1.wins);
+                    expect(draws.innerHTML).toEqual('' + this.game.player1.draws);
+                    expect(losses.innerHTML).toEqual('' + this.game.player1.losses);
                 });
             });
         });
@@ -452,14 +449,14 @@ describe('Game View', function () {
                 this.game.player0.draws = 0;
                 this.game.player1.draws = 0;
                 this.gameView.manageWinnerOrDraw();
-                
+
                 expect(this.game.player0.draws).toEqual(1);
                 expect(this.game.player1.draws).toEqual(1);
             });
-            
+
             it('should update players\' score when the game is finished with a winner', 
                function () {  
-                
+
                 spyOn(this.gameView, "checkWinner").and.callFake(function() {
                     return true;
                 });
@@ -468,7 +465,7 @@ describe('Game View', function () {
                 this.game.player0.wins = 0;
                 this.game.player1.losses = 0;
                 this.gameView.manageWinnerOrDraw();
-                
+
                 expect(this.game.player0.wins).toEqual(1);
                 expect(this.game.player1.losses).toEqual(1);
             });

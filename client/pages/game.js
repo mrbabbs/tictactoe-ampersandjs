@@ -30,6 +30,7 @@ module.exports = PageView.extend({
     },
     initialize: function (options) {
         if (!this.model) {
+            app.router.navigate('');
             throw new Error('Model is required');
         }
     },
