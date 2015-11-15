@@ -1,6 +1,7 @@
 # TicTacToe
 
 An implementation of a two player Tic-tac-toe game using Ampersand.js.
+Version: 1.0.0
 
 ## How to run it
 
