@@ -32,15 +32,15 @@ module.exports = FormView.extend({
                 ]
             }));
         }
-        
+
         return fields;
     },
+    
     submitCallback: function (data) {
-        
         if (data.player0 === data.player1) {
             return;
         }
-        
+
         app.game = new Game({
             player0: new Player({
                 username: data.player0
@@ -49,7 +49,7 @@ module.exports = FormView.extend({
                 username: data.player1
             })
         });
-        
+
         app.router.navigate('game');
     }
 });

@@ -4,15 +4,18 @@ describe('New Game form', function () {
     beforeEach(function() {
         var form = '<form><fieldset><fieldset><input type="submit"</form>';
         document.body.innerHTML = form;
-        var fieldset = document.body.querySelector('fiedlset');
+        var form = document.body.querySelector('form');
 
         this.newGameForm = new NewGameForm({
-            el: fieldset,
+            el: form,
             data: {
                 player0: '',
                 player1: ''
             }
         });
+
+        this.newGameForm.render();
+        this.el = this.newGameForm.el; 
     });
 
     it('should be defined', function () {
@@ -35,17 +38,12 @@ describe('New Game form', function () {
     });
 
     describe('when is rendered', function () {
-        beforeEach(function () {
-            this.newGameForm.render();
-            this.el = this.newGameForm.el; 
-        });
-
         it('should have DOM element created', function () {
             expect(this.el).toBeDefined();
         });
 
         it('should have two empty input form', function () {
-            var inputs = this.el.querySelectorAll('input');
+            var inputs = this.el.querySelectorAll('input[type="text"]');
 
             expect(inputs.length).toEqual(2);
             expect(inputs[0].value).toEqual('');
@@ -107,7 +105,7 @@ describe('New Game form', function () {
                 });
                 expect(app.router.navigate).toHaveBeenCalledWith('game');
             });
-            
+
             it('should create a new game', function () {
                 this.newGameForm.submitCallback({
                     player0: 'user_1',
