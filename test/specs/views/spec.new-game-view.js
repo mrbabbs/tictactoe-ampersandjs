@@ -84,11 +84,11 @@ describe('New Game view', function () {
             this.event = document.createEvent('Event');
             this.event.initEvent('click', true, true);
         });
-        
+
         afterEach(function () {
             this.event = null;
         });
-        
+
         describe('click on submit', function () {
             it('should call checkDuplicate', function () {
                 var buttonSubmit = document.querySelector('[type="submit"]');
@@ -114,11 +114,10 @@ describe('New Game view', function () {
         describe('checkDuplicate', function () {
             it('should set duplicate to true only if the usernames are the same', 
                function () {
-                this.newGameView.form.data = {
-                    player0: 'user1',
-                    player1: 'user1'
-                };
-
+                var inputs = this.el.querySelectorAll('input.form-control');
+                inputs[0].value = 'user';
+                inputs[1].value = 'user';
+                
                 this.newGameView.duplicate = false;
                 this.newGameView.checkDuplicate();
 
@@ -127,10 +126,9 @@ describe('New Game view', function () {
 
             it('should not set duplicate to true if the usernames are different', 
                function () {
-                this.newGameView.form.data = {
-                    player0: 'user1',
-                    player1: 'user2'
-                };
+                var inputs = this.el.querySelectorAll('input.form-control');
+                inputs[0].value = 'user1';
+                inputs[1].value = 'user2';
 
                 this.newGameView.duplicate = false;
                 this.newGameView.checkDuplicate();
