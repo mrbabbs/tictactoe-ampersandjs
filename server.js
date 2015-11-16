@@ -113,4 +113,4 @@ new Moonboots({
 
 // listen for incoming http requests on the port as specified in our config
 app.listen(config.http.port);
-console.log('TicTacToe is running at: http://localhost:' + config.http.port + ' Yep. That\'s pretty awesome.');
+console.log('TicTacToe is running at: http://localhost:' + config.http.port + '/tictactoe Yep. That\'s pretty awesome.');

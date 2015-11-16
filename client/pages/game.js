@@ -30,7 +30,7 @@ module.exports = PageView.extend({
     },
     initialize: function (options) {
         if (!this.model) {
-            app.router.navigate('');
+            app.router.navigate('tictactoe');
             throw new Error('Model is required');
         }
     },

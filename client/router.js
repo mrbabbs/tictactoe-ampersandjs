@@ -7,7 +7,7 @@ var Game = require('./pages/game');
 
 module.exports = Router.extend({
     routes: {
-        '': 'home',
+        'tictactoe': 'home',
         'game': 'game',
         '(*path)': 'catchAll'
     },
@@ -24,6 +24,6 @@ module.exports = Router.extend({
     },
 
     catchAll: function () {
-        this.redirectTo('');
+        this.redirectTo('tictactoe');
     }
 });
