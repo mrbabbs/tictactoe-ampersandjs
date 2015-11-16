@@ -14,6 +14,7 @@
 
     var templatizer = {};
     templatizer["forms"] = {};
+    templatizer["includes"] = {};
     templatizer["pages"] = {};
 
     // body.jade compiled template
